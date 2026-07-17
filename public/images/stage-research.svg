@@ -1,0 +1,32 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" rx="12" fill="#f8fafc"/>
+  <rect x="20" y="20" width="360" height="68" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <circle cx="44" cy="44" r="14" fill="#3b82f6" opacity="0.1"/>
+  <path d="M44 38v12M38 44h12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+  <text x="68" y="40" font-family="monospace" font-size="11" font-weight="600" fill="#1e293b">stripe.com</text>
+  <text x="68" y="56" font-family="sans-serif" font-size="9" fill="#64748b">Financial infrastructure · 4,000+ employees</text>
+  <text x="68" y="72" font-family="sans-serif" font-size="9" fill="#64748b">San Francisco · Series G · $95B valuation</text>
+
+  <rect x="20" y="100" width="170" height="80" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="32" y="118" font-family="sans-serif" font-size="9" font-weight="600" fill="#3b82f6">TECH STACK</text>
+  <rect x="32" y="126" width="58" height="18" rx="4" fill="#eff6ff"/>
+  <text x="40" y="139" font-family="sans-serif" font-size="8" fill="#3b82f6">React</text>
+  <rect x="98" y="126" width="58" height="18" rx="4" fill="#eff6ff"/>
+  <text x="106" y="139" font-family="sans-serif" font-size="8" fill="#3b82f6">AWS</text>
+  <rect x="32" y="150" width="58" height="18" rx="4" fill="#eff6ff"/>
+  <text x="38" y="163" font-family="sans-serif" font-size="8" fill="#3b82f6">Python</text>
+  <rect x="98" y="150" width="58" height="18" rx="4" fill="#eff6ff"/>
+  <text x="104" y="163" font-family="sans-serif" font-size="8" fill="#3b82f6">Kafka</text>
+
+  <rect x="210" y="100" width="170" height="80" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="222" y="118" font-family="sans-serif" font-size="9" font-weight="600" fill="#10b981">RECENT NEWS</text>
+  <text x="222" y="134" font-family="sans-serif" font-size="8" fill="#1e293b">• Launched Tax API v2</text>
+  <text x="222" y="150" font-family="sans-serif" font-size="8" fill="#1e293b">• Hired VP of Platform</text>
+  <text x="222" y="166" font-family="sans-serif" font-size="8" fill="#1e293b">• Expanded to Japan</text>
+
+  <rect x="20" y="196" width="360" height="84" rx="8" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="32" y="214" font-family="sans-serif" font-size="9" font-weight="600" fill="#f59e0b">JOB SIGNALS</text>
+  <text x="32" y="230" font-family="sans-serif" font-size="8" fill="#1e293b">Engineering: 12 roles (Scaling payments)</text>
+  <text x="32" y="246" font-family="sans-serif" font-size="8" fill="#1e293b">Sales: 8 roles (Enterprise expansion)</text>
+  <text x="32" y="262" font-family="sans-serif" font-size="8" fill="#1e293b">Support: 5 roles (New market coverage)</text>
+</svg>

@@ -49,7 +49,7 @@ async function handleLogin() {
           :error="errors.password" />
       </FormField>
       <button type="submit" :disabled="auth.loading"
-        class="w-full h-[44px] mt-4 bg-[#635BFF] text-white text-[15px] font-medium rounded-lg hover:bg-[#5455E2] shadow-stripe-btn hover:-translate-y-[1px] hover:shadow-stripe-btn-hover active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
+        class="w-full h-[44px] mt-4 bg-black text-white text-[15px] font-medium rounded-lg hover:bg-gray-900 shadow-stripe-btn hover:-translate-y-[1px] hover:shadow-stripe-btn-hover active:scale-[0.98] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
         {{ auth.loading ? 'Signing in...' : 'Sign in' }}
       </button>
     </form>

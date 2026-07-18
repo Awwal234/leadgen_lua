@@ -15,7 +15,8 @@ defineEmits<{
     </div>
 
     <div class="text-center max-w-[1000px] mx-auto px-4 relative z-10">
-      <h1 class="hero-fade text-[clamp(3rem,5vw+1rem,5.75rem)] font-extrabold leading-[1.02] tracking-tighter mb-8"
+      <h1
+        class="hero-fade mx-auto text-[clamp(2.5rem,10vw,3.5rem)] md:text-[clamp(3rem,5vw+1rem,5.75rem)] font-extrabold leading-[1.02] tracking-tighter mb-8"
         style="animation-delay: 0ms">
         <span class="text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500">
           Research accounts.<br />
@@ -30,20 +31,31 @@ defineEmits<{
         steps. No credit card. 100 leads/month free.
       </p>
 
+      <!--  -->
       <div class="hero-fade flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
         style="animation-delay: 300ms">
+
+        <!-- Primary Button -->
         <button
-          class="inline-flex items-center justify-center gap-2 font-semibold rounded-full cursor-pointer no-underline whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-black text-white hover:bg-gray-900 hover:scale-[1.03] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.15)] ring-1 ring-black/10"
+          class="inline-flex w-full md:w-fit items-center justify-center gap-2 font-semibold rounded-full cursor-pointer whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-black text-white hover:bg-gray-900 hover:scale-[1.03] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.15)] ring-1 ring-black/10"
           @click="$emit('ctaClick')">
           <span>Start free — no credit card required</span>
+
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="opacity-80">
             <path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
         </button>
-        <a href="/login"
-          class="inline-flex items-center justify-center gap-2 font-semibold rounded-full cursor-pointer no-underline whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-white/50 backdrop-blur-md text-gray-800 border border-gray-200/50 hover:bg-white hover:shadow-lg hover:scale-[1.03] transition-all active:scale-[0.98]">Sign
-          in to your workspace</a>
+
+
+        <!-- Secondary Button -->
+        <button
+          class="inline-flex w-full md:w-fit items-center justify-center gap-2 font-semibold rounded-full cursor-pointer whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-transparent text-gray-900 border border-black/10 hover:bg-black/[0.03] hover:border-black/20 hover:scale-[1.03] active:scale-[0.98] transition-all"
+          @click="$router.push('/login')">
+          Sign in to your workspace
+        </button>
+
       </div>
+      <!--  -->
 
       <div
         class="hero-fade flex items-center justify-center gap-4 p-6 bg-white/70 backdrop-blur-2xl border border-white/40 rounded-[2.5rem] mt-12 flex-wrap shadow-[0_20px_60px_rgba(0,0,0,0.06)] max-w-4xl mx-auto"

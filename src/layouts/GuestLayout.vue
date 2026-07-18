@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="min-h-[100vh] bg-[#f6f9fc] flex items-center justify-center p-4 sm:p-8 font-body selection:bg-[#635BFF]/20 selection:text-[#32325D]">
+    class="min-h-[100vh] bg-[#f6f9fc] flex items-center justify-center p-4 sm:p-8 font-body selection:bg-black/20 selection:text-[#32325D]">
     <div class="w-full max-w-[420px] animate-stripe-fade-in-up">
       <div class="text-center mb-8">
         <h1 class="text-[28px] font-bold tracking-tight text-[#32325D]">

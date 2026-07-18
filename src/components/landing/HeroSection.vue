@@ -16,7 +16,7 @@ defineEmits<{
 
     <div class="text-center max-w-[1000px] mx-auto px-4 relative z-10">
       <h1
-        class="hero-fade mx-auto text-[clamp(2.5rem,10vw,3.5rem)] md:text-[clamp(3rem,5vw+1rem,5.75rem)] font-extrabold leading-[1.02] tracking-tighter mb-8"
+        class="hero-fade mx-auto text-[clamp(3rem,5vw+1rem,5.75rem)] text-[clamp(2.75rem,9vw,4rem)] md:text-[clamp(3rem,5vw+1rem,5.75rem)] font-extrabold leading-[1.02] tracking-tighter mb-8"
         style="animation-delay: 0ms">
         <span class="text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500">
           Research accounts.<br />

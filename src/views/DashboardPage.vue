@@ -73,10 +73,8 @@ onMounted(fetchLeads)
         <h1 class="text-2xl font-bold text-gray-900">Leads</h1>
         <p class="text-sm text-gray-500 mt-1">{{ leads.length }} total leads</p>
       </div>
-      <button
-        @click="showCreateModal = true"
-        class="h-10 px-4 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-2 self-start sm:self-auto"
-      >
+      <button @click="showCreateModal = true"
+        class="h-10 px-4 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors flex items-center gap-2 self-start sm:self-auto">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
         </svg>
@@ -86,20 +84,15 @@ onMounted(fetchLeads)
 
     <!-- Filters -->
     <div class="flex gap-2 mb-4 flex-wrap overflow-x-auto pb-2 -mx-2 px-2" role="group" aria-label="Status filters">
-      <button
-        @click="statusFilter = 'ALL'; onStatusFilterChange()"
+      <button @click="statusFilter = 'ALL'; onStatusFilterChange()"
         class="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap shrink-0"
-        :class="statusFilter === 'ALL' ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-      >
+        :class="statusFilter === 'ALL' ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'">
         All
       </button>
-      <button
-        v-for="status in (['NEW', 'RESEARCHED', 'CONTACT_FOUND', 'OUTREACH_READY', 'ARCHIVED'] as LeadStatus[])"
-        :key="status"
-        @click="statusFilter = status; onStatusFilterChange()"
+      <button v-for="status in (['NEW', 'RESEARCHED', 'CONTACT_FOUND', 'OUTREACH_READY', 'ARCHIVED'] as LeadStatus[])"
+        :key="status" @click="statusFilter = status; onStatusFilterChange()"
         class="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap shrink-0"
-        :class="statusFilter === status ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-      >
+        :class="statusFilter === status ? 'bg-black text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'">
         {{ LEAD_STATUS_LABELS[status] }}
       </button>
     </div>
@@ -113,21 +106,17 @@ onMounted(fetchLeads)
     </div>
 
     <!-- Empty state -->
-    <div
-      v-else-if="leads.length === 0"
-      class="bg-white rounded-xl border border-gray-200 p-12 text-center"
-    >
+    <div v-else-if="leads.length === 0" class="bg-white rounded-xl border border-gray-200 p-12 text-center">
       <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-4">
         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       </div>
       <h3 class="text-lg font-medium text-gray-900 mb-1">No leads yet</h3>
       <p class="text-sm text-gray-500 mb-4">Create your first lead to start researching</p>
-      <button
-        @click="showCreateModal = true"
-        class="h-10 px-4 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors"
-      >
+      <button @click="showCreateModal = true"
+        class="h-10 px-4 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors">
         Create Lead
       </button>
     </div>
@@ -139,20 +128,22 @@ onMounted(fetchLeads)
           <thead>
             <tr class="border-b border-gray-200 bg-gray-50/50">
               <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Company</th>
-              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Domain</th>
-              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Target Role</th>
-              <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Status</th>
+              <th
+                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">
+                Domain</th>
+              <th
+                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                Target Role</th>
+              <th
+                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">
+                Status</th>
               <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Progress</th>
               <th class="text-right px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100">
-            <tr
-              v-for="lead in filteredLeads"
-              :key="lead.id"
-              @click="router.push(`/app/leads/${lead.id}`)"
-              class="hover:bg-gray-50 transition-colors cursor-pointer"
-            >
+            <tr v-for="lead in filteredLeads" :key="lead.id" @click="router.push(`/app/leads/${lead.id}`)"
+              class="hover:bg-gray-50 transition-colors cursor-pointer">
               <td class="px-5 py-4">
                 <p class="text-sm font-medium text-gray-900">{{ lead.company }}</p>
                 <p class="text-xs text-gray-500">{{ new Date(lead.createdAt).toLocaleDateString() }}</p>
@@ -183,13 +174,11 @@ onMounted(fetchLeads)
                 </div>
               </td>
               <td class="px-5 py-4 text-right">
-                <button
-                  @click="handleDeleteLead(lead.id, $event)"
-                  class="p-2 text-gray-400 hover:text-red-500 transition-colors touch-target"
-                  title="Delete"
-                >
+                <button @click="handleDeleteLead(lead.id, $event)"
+                  class="p-2 text-gray-400 hover:text-red-500 transition-colors touch-target" title="Delete">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                   </svg>
                 </button>
               </td>
@@ -203,10 +192,6 @@ onMounted(fetchLeads)
       </div>
     </div>
 
-    <CreateLeadModal
-      v-if="showCreateModal"
-      @close="showCreateModal = false"
-      @created="handleLeadCreated"
-    />
+    <CreateLeadModal v-if="showCreateModal" @close="showCreateModal = false" @created="handleLeadCreated" />
   </div>
 </template>

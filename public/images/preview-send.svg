@@ -1,0 +1,20 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#fafafa"/>
+  <!-- App Window -->
+  <rect x="40" y="40" width="320" height="220" rx="16" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+  <!-- Header -->
+  <rect x="40" y="40" width="320" height="40" rx="16" fill="#f9fafb"/>
+  <rect x="40" y="80" width="320" height="2" fill="#e5e7eb"/>
+  <circle cx="60" cy="60" r="5" fill="#ef4444"/>
+  <circle cx="76" cy="60" r="5" fill="#f59e0b"/>
+  <circle cx="92" cy="60" r="5" fill="#10b981"/>
+  <!-- Body -->
+  <rect x="64" y="104" width="120" height="8" rx="4" fill="#e5e7eb"/>
+  <rect x="64" y="128" width="260" height="6" rx="3" fill="#f3f4f6"/>
+  <rect x="64" y="144" width="240" height="6" rx="3" fill="#f3f4f6"/>
+  <rect x="64" y="160" width="200" height="6" rx="3" fill="#f3f4f6"/>
+  
+  <!-- Send Button -->
+  <rect x="64" y="200" width="80" height="32" rx="8" fill="#111827"/>
+  <path d="M96 216 L108 216 M104 212 L108 216 L104 220" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

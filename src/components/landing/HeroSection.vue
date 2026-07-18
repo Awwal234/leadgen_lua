@@ -5,193 +5,122 @@ defineEmits<{
 </script>
 
 <template>
-  <header class="max-w-7xl mx-auto pt-12 md:pt-20">
-    <div class="text-center max-w-[900px] mx-auto">
-      <h1
-        class="hero-fade font-display text-[clamp(2.25rem,5vw+1rem,4rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-gray-900 mb-6 md:mb-8"
-        style="animation-delay: 0ms"
-      >
-        Research target accounts.<br />
-        Find decision makers.<br />
-        Write and send outreach.
+  <header class="relative max-w-7xl mx-auto pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+    <!-- Intense Background Glows -->
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] opacity-30 pointer-events-none blur-[100px] z-[-1]">
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full animate-pulse-slow">
+      </div>
+    </div>
+
+    <div class="text-center max-w-[1000px] mx-auto px-4 relative z-10">
+      <h1 class="hero-fade text-[clamp(3rem,5vw+1rem,5.75rem)] font-extrabold leading-[1.02] tracking-tighter mb-8"
+        style="animation-delay: 0ms">
+        <span class="text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-500">
+          Research accounts.<br />
+          Find decisions makers.<br />
+          Send outreach.
+        </span>
       </h1>
 
-      <p
-        class="hero-fade text-[clamp(1.125rem,1.5vw+0.75rem,1.375rem)] leading-relaxed text-gray-500 max-w-[60ch] mx-auto mb-8 md:mb-10"
-        style="animation-delay: 150ms"
-      >
+      <p class="hero-fade text-[clamp(1.25rem,2vw+0.75rem,1.5rem)] leading-relaxed text-gray-500 max-w-[48ch] mx-auto mb-12 md:mb-14 font-medium tracking-tight"
+        style="animation-delay: 150ms">
         AI pipeline that turns a company name into researched, personalized outreach — sent in 5
         steps. No credit card. 100 leads/month free.
       </p>
 
-      <div
-        class="hero-fade flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-        style="animation-delay: 300ms"
-      >
+      <div class="hero-fade flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
+        style="animation-delay: 300ms">
         <button
-          class="inline-flex items-center justify-center gap-2 font-medium rounded-lg border cursor-pointer no-underline whitespace-nowrap px-8 py-4 text-base min-h-[48px] bg-black text-white border-black hover:bg-gray-900 hover:border-gray-900 hover:-translate-y-px hover:shadow-md transition-all active:scale-[0.97]"
-          @click="$emit('ctaClick')"
-        >
+          class="inline-flex items-center justify-center gap-2 font-semibold rounded-full cursor-pointer no-underline whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-black text-white hover:bg-gray-900 hover:scale-[1.03] active:scale-[0.98] transition-all shadow-[0_12px_30px_rgba(0,0,0,0.15)] ring-1 ring-black/10"
+          @click="$emit('ctaClick')">
           <span>Start free — no credit card required</span>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path
-              d="M5 10h10M10 5v10"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="opacity-80">
+            <path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
           </svg>
         </button>
-        <a
-          href="/login"
-          class="inline-flex items-center justify-center gap-2 font-medium rounded-lg border cursor-pointer no-underline whitespace-nowrap px-8 py-4 text-base min-h-[48px] bg-white text-gray-900 border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all active:scale-[0.97]"
-          >Sign in to your workspace</a
-        >
+        <a href="/login"
+          class="inline-flex items-center justify-center gap-2 font-semibold rounded-full cursor-pointer no-underline whitespace-nowrap px-10 py-5 text-[16px] min-h-[60px] bg-white/50 backdrop-blur-md text-gray-800 border border-gray-200/50 hover:bg-white hover:shadow-lg hover:scale-[1.03] transition-all active:scale-[0.98]">Sign
+          in to your workspace</a>
       </div>
 
       <div
-        class="hero-fade flex items-center justify-center gap-3 p-4 bg-white border-x border-t border-gray-200 rounded-t-xl mt-10 flex-wrap"
-        style="animation-delay: 450ms"
-        role="img"
-        aria-label="Pipeline preview: Research → Pain Points → Decision Makers → Outreach → Send"
-      >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 550ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
+        class="hero-fade flex items-center justify-center gap-4 p-6 bg-white/70 backdrop-blur-2xl border border-white/40 rounded-[2.5rem] mt-12 flex-wrap shadow-[0_20px_60px_rgba(0,0,0,0.06)] max-w-4xl mx-auto"
+        style="animation-delay: 450ms" role="img"
+        aria-label="Pipeline preview: Research → Pain Points → Decision Makers → Outreach → Send">
+        <div class="hero-step flex flex-col items-center gap-3 shrink-0 min-w-[90px] p-2"
+          style="animation-delay: 550ms">
+          <div
+            class="w-12 h-12 flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] text-gray-900 rounded-[1.25rem]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
               <circle cx="11" cy="11" r="8" />
               <path d="M21 21l-4.35-4.35" />
             </svg>
           </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Research</span
-          >
+          <span
+            class="text-[13px] font-semibold text-gray-500 text-center whitespace-nowrap tracking-wide">Research</span>
         </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 590ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 630ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-              />
+        <span class="hero-arrow shrink-0 text-gray-300 text-2xl font-light opacity-50" style="animation-delay: 590ms"
+          aria-hidden="true">→</span>
+        <div class="hero-step flex flex-col items-center gap-3 shrink-0 min-w-[90px] p-2"
+          style="animation-delay: 630ms">
+          <div
+            class="w-12 h-12 flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] text-gray-900 rounded-[1.25rem]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
               <line x1="12" y1="9" x2="12" y2="13" />
               <line x1="12" y1="17" x2="12.01" y2="17" />
             </svg>
           </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Pain Points</span
-          >
+          <span class="text-[13px] font-semibold text-gray-500 text-center whitespace-nowrap tracking-wide">Pain
+            Points</span>
         </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 670ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 710ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
+        <span class="hero-arrow shrink-0 text-gray-300 text-2xl font-light opacity-50" style="animation-delay: 670ms"
+          aria-hidden="true">→</span>
+        <div class="hero-step flex flex-col items-center gap-3 shrink-0 min-w-[90px] p-2"
+          style="animation-delay: 710ms">
+          <div
+            class="w-12 h-12 flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] text-gray-900 rounded-[1.25rem]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
               <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Decision Makers</span
-          >
+          <span class="text-[13px] font-semibold text-gray-500 text-center whitespace-nowrap tracking-wide">Decision
+            Makers</span>
         </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 750ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 790ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-              />
+        <span class="hero-arrow shrink-0 text-gray-300 text-2xl font-light opacity-50" style="animation-delay: 750ms"
+          aria-hidden="true">→</span>
+        <div class="hero-step flex flex-col items-center gap-3 shrink-0 min-w-[90px] p-2"
+          style="animation-delay: 790ms">
+          <div
+            class="w-12 h-12 flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] text-gray-900 rounded-[1.25rem]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Outreach</span
-          >
+          <span
+            class="text-[13px] font-semibold text-gray-500 text-center whitespace-nowrap tracking-wide">Outreach</span>
         </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 830ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 870ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
+        <span class="hero-arrow shrink-0 text-gray-300 text-2xl font-light opacity-50" style="animation-delay: 830ms"
+          aria-hidden="true">→</span>
+        <div class="hero-step flex flex-col items-center gap-3 shrink-0 min-w-[90px] p-2"
+          style="animation-delay: 870ms">
+          <div
+            class="w-12 h-12 flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_12px_rgba(0,0,0,0.04)] text-gray-900 rounded-[1.25rem]">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
               <path
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap">Send</span>
+          <span class="text-[13px] font-semibold text-gray-500 text-center whitespace-nowrap tracking-wide">Send</span>
         </div>
       </div>
     </div>
@@ -224,6 +153,7 @@ defineEmits<{
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .hero-fade,
   .hero-step,
   .hero-arrow {

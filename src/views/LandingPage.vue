@@ -9,6 +9,7 @@ import StageDecisionMakers from '@/components/landing/StageDecisionMakers.vue'
 import StageOutreach from '@/components/landing/StageOutreach.vue'
 import FAQSection from '@/components/landing/FAQSection.vue'
 import FooterCTA from '@/components/landing/FooterCTA.vue'
+import PublicFooter from '@/components/landing/PublicFooter.vue'
 import StickyCTABar from '@/components/landing/StickyCTABar.vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 
@@ -60,12 +61,15 @@ onUnmounted(() => {
 
     <FooterCTA @cta-click="scrollToRegister" />
 
+    <PublicFooter />
+
     <StickyCTABar :class="{ 'is-visible': showStickyCTA }" @cta-click="scrollToRegister" />
   </main>
 </template>
 
-<style scoped>
+<style>
 .landing-page {
   min-height: 100vh;
+  zoom: 0.9;
 }
 </style>

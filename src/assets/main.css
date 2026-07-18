@@ -3,7 +3,53 @@
 @source "../";
 
 @theme {
-  --font-display: 'Fraunces', 'Georgia', serif;
-  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-apple-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-stripe-spring: cubic-bezier(0.19, 1, 0.22, 1);
+  --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@layer utilities {
+  .shadow-stripe-card {
+    box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
+  }
+  .shadow-stripe-focus {
+    box-shadow: 0 0 0 1px #635BFF, 0 1px 3px 0 rgba(50, 50, 93, 0.15);
+  }
+  .shadow-stripe-btn {
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+  .shadow-stripe-btn-hover {
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Base styles */
+
+/* ─── Autofill override ─────────────────────────────────────────────────── */
+/* Browsers (Chrome, Safari) inject a yellow/blue background on autofilled    */
+/* inputs. We can't override background-color directly, but we can paint      */
+/* over it with an inset box-shadow. Transition delay keeps it invisible       */
+/* during the fill animation.                                                  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 9999px #ffffff inset !important;
+  box-shadow: 0 0 0 9999px #ffffff inset !important;
+  -webkit-text-fill-color: #32325D !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

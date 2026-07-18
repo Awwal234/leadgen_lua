@@ -1,20 +1,20 @@
 <template>
-  <section id="faq" class="py-20 md:py-24 lg:py-32 reveal" aria-labelledby="faq-heading">
+  <section id="faq" class="py-24 lg:py-32 reveal bg-[#fafafa]" aria-labelledby="faq-heading">
     <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-12">
-      <header class="text-center max-w-[720px] mx-auto mb-16">
-        <h2 id="faq-heading" class="font-display text-[clamp(1.75rem,3vw+1rem,2.5rem)] font-semibold leading-tight text-gray-900 mb-3">Questions?</h2>
-        <p class="text-lg text-gray-500">Straight answers to common questions</p>
+      <header class="text-center max-w-[720px] mx-auto mb-20">
+        <h2 id="faq-heading" class="text-[clamp(2rem,4vw+1rem,3.5rem)] font-semibold tracking-tight leading-tight text-gray-900 mb-4">Questions?</h2>
+        <p class="text-[1.125rem] text-gray-500 font-medium tracking-wide">Straight answers to common questions.</p>
       </header>
 
-      <div class="grid gap-3 md:gap-4 max-w-[800px] mx-auto reveal-stagger">
-        <details class="reveal border border-gray-200 rounded-lg overflow-hidden bg-white" v-for="faq in faqs" :key="faq.question">
-          <summary class="w-full flex items-center justify-between gap-4 px-6 py-5 text-base font-medium text-gray-900 text-left bg-transparent border-none cursor-pointer hover:bg-gray-50 transition-colors">
+      <div class="grid gap-4 max-w-[800px] mx-auto reveal-stagger">
+        <details class="reveal border border-gray-100/80 rounded-[1.25rem] overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300" v-for="faq in faqs" :key="faq.question">
+          <summary class="w-full flex items-center justify-between gap-4 px-8 py-6 text-[1.0625rem] font-semibold tracking-tight text-gray-900 text-left bg-transparent border-none cursor-pointer hover:bg-gray-50/50 transition-colors">
             {{ faq.question }}
-            <svg class="faq-icon shrink-0 w-6 h-6 text-gray-500 transition-transform duration-250" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <svg class="faq-icon shrink-0 w-6 h-6 text-gray-400 transition-transform duration-300" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </summary>
-          <div class="px-6 pb-5 text-gray-700 leading-relaxed">
+          <div class="px-8 pb-8 text-[15px] font-medium text-gray-600 leading-relaxed">
             <p class="m-0">{{ faq.answer }}</p>
           </div>
         </details>

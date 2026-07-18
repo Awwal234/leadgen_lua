@@ -16,14 +16,14 @@ export function useScrollReveal() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const target = entry.target as HTMLElement
-            target.classList.add('is-visible')
+            target.classList.add('is-visible', 'transition-all', 'duration-[800ms]', 'ease-[cubic-bezier(0.175,0.885,0.32,1.275)]')
             observer.value?.unobserve(target)
           }
         })
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px',
       },
     )
 

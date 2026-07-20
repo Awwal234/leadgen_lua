@@ -1,62 +1,122 @@
 <script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterView } from 'vue-router'
-import { useToast } from 'primevue/usetoast'
-import Toast from 'primevue/toast'
-import { setToastListener } from '@/utils/toast'
+import ToastNotification from '@/components/ToastNotification.vue'
+import BuyCreditsModal from '@/components/BuyCreditsModal.vue'
 
-const primeToast = useToast()
+const showBuyModal = ref(false)
+const buyModalData = ref<{ balance: number; needed: number } | null>(null)
 
-setToastListener((msg) => {
-  primeToast.add(msg)
+function onInsufficientCredits(e: Event) {
+  const detail = (e as CustomEvent).detail as { balance: number; needed: number }
+  buyModalData.value = detail
+  showBuyModal.value = true
+}
+
+onMounted(() => {
+  window.addEventListener('insufficient-credits', onInsufficientCredits)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('insufficient-credits', onInsufficientCredits)
 })
 </script>
 
 <template>
-  <Toast />
+  <ToastNotification />
   <RouterView />
+  <BuyCreditsModal v-if="showBuyModal" :balance="buyModalData?.balance" :needed="buyModalData?.needed"
+    @close="showBuyModal = false" />
 </template>
 
 
 <style>
-/* Firefox */
-html {
-  scrollbar-width: thin;
-  scrollbar-color: #b8b8b8 transparent;
-}
-
 body {
   font-family: "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Chrome, Edge, Safari */
-html::-webkit-scrollbar {
-  width: 12px;
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-html::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
 
-html::-webkit-scrollbar-thumb {
-  background: #c8c8c8;
+::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
   border-radius: 999px;
-  border: 3px solid #fff;
 }
 
-html::-webkit-scrollbar-thumb:hover {
-  background: #9a9a9a;
+::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
 }
 
-html::-webkit-scrollbar-thumb:active {
-  background: #7a7a7a;
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.main-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.main-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-scroll::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 999px;
+}
+
+.main-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+.main-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
+}
+
+.apple-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.apple-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.apple-scroll::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-radius: 999px;
+}
+
+.apple-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a3a3a3;
+}
+
+.apple-scroll::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.apple-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d4d4d4 transparent;
 }
 
 button {
   cursor: pointer;
-  border-radius: 6px;
-  padding: 6px 16px;
 }
 
 /*  */

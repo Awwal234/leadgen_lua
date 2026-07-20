@@ -4,10 +4,10 @@
     <div class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
       <header class="text-center w-full max-w-[720px] mx-auto mb-10 md:mb-16 px-6 shrink-0 mt-20">
         <h2 id="pipeline-heading"
-          class="text-[clamp(2.5rem,4vw+1rem,3.5rem)] font-semibold tracking-tight leading-tight text-gray-900 mb-4">How
-          it works</h2>
-        <p class="text-[1.125rem] md:text-[1.25rem] text-gray-500 font-medium tracking-wide leading-relaxed">Four
-          stages. One workflow. From company name to send-ready outreach.</p>
+          class="text-[clamp(2.25rem,4vw+1rem,3.25rem)] font-bold tracking-[-0.03em] leading-tight text-gray-900 mb-4">
+          How it works</h2>
+        <p class="text-[1.125rem] md:text-[1.25rem] text-gray-500 font-medium tracking-[-0.01em] leading-relaxed">
+          Four stages. One workflow. From company name to send-ready outreach.</p>
       </header>
 
       <div class="w-full overflow-hidden pb-20">
@@ -15,16 +15,22 @@
           aria-label="Pipeline stages">
           <template v-for="(stage, index) in stages" :key="stage.id">
             <article
-              class="w-[85vw] sm:w-[380px] lg:w-[420px] bg-white border border-gray-200/60 rounded-[2rem] p-8 text-center flex flex-col hover:shadow-[0_20px_40px_rgb(0,0,0,0.06)] hover:-translate-y-2 transition-all duration-500 shrink-0"
+              class="w-[85vw] sm:w-[380px] lg:w-[420px] bg-white rounded-2xl p-8 text-center flex flex-col hover:shadow-[0_24px_64px_-12px_rgba(0,0,0,0.10)] hover:-translate-y-0.5 transition-all duration-500 shrink-0 shadow-[0_2px_12px_rgba(0,0,0,0.03),0_0_0_1px_rgba(0,0,0,0.02)]"
               role="listitem">
               <div
-                class="w-12 h-12 mx-auto mb-6 flex items-center justify-center text-lg font-semibold text-gray-900 bg-gray-50 border border-gray-100 shadow-sm rounded-2xl"
-                aria-hidden="true">{{ index + 1 }}</div>
-              <h3 class="text-xl font-semibold tracking-tight text-gray-900 mb-3">{{ stage.name }}</h3>
-              <p class="text-[15px] text-gray-500 mb-8 leading-relaxed font-medium min-h-[44px]">{{ stage.description }}
-              </p>
+                class="w-9 h-9 mx-auto mb-3 flex items-center justify-center text-xs font-bold bg-amber-50 border border-amber-200/50 rounded-xl">
+                <span class="tracking-[-0.02em] text-amber-700">{{ String(index + 1).padStart(2, '0') }}</span>
+              </div>
+              <div class="flex flex-wrap gap-2 justify-center mb-4">
+                <span v-for="tag in stage.tags" :key="tag"
+                  class="px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/30 text-[10px] font-semibold text-amber-600/70 uppercase tracking-[0.12em] leading-none">
+                  {{ tag }}
+                </span>
+              </div>
+              <h3 class="text-xl font-bold tracking-[-0.02em] text-gray-900 mb-3">{{ stage.name }}</h3>
+              <p class="text-[14px] text-gray-500 mb-8 leading-relaxed font-medium">{{ stage.description }}</p>
 
-              <div class="aspect-[4/3] rounded-xl overflow-hidden mb-8 border border-gray-100 shadow-sm relative group"
+              <div class="aspect-[4/3] rounded-xl overflow-hidden mb-8 relative shadow-[inset_0_0_0_1px_rgba(0,0,0,0.02)]"
                 :style="{ background: stage.previewBg }">
                 <div
                   class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 z-10 pointer-events-none">
@@ -34,21 +40,22 @@
                   loading="lazy" />
               </div>
 
-              <ul class="list-none p-0 m-0 mb-8 text-left space-y-3" :aria-label="`${stage.name} outputs`">
+              <ul class="list-none p-0 m-0 mb-8 text-left space-y-2.5" :aria-label="`${stage.name} outputs`">
                 <li v-for="output in stage.outputs" :key="output"
-                  class="flex items-start gap-3 py-1 text-[15px] text-gray-600 leading-relaxed font-medium">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                    class="shrink-0 mt-[3px] text-gray-400" aria-hidden="true">
+                  class="flex items-start gap-3 text-[14px] text-gray-500 leading-snug font-medium">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    class="shrink-0 mt-0.5 text-amber-400" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   {{ output }}
                 </li>
               </ul>
 
-              <div class="flex flex-col items-center gap-2 pt-6 border-t border-gray-100 mt-auto">
-                <span class="text-4xl font-semibold tracking-tight leading-tight text-gray-900">{{ stage.metric.value
+              <div class="flex flex-col items-center gap-1.5 pt-6 mt-auto relative">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+                <span class="text-3xl font-bold tracking-[-0.03em] leading-tight text-gray-900">{{ stage.metric.value
                   }}</span>
-                <span class="text-[13px] text-gray-500 font-medium tracking-wide uppercase">{{ stage.metric.label
+                <span class="text-[11px] text-gray-400 font-semibold tracking-[0.08em] uppercase">{{ stage.metric.label
                   }}</span>
               </div>
             </article>
@@ -56,9 +63,8 @@
         </div>
       </div>
 
-      <!-- Progress Bar Indicator -->
       <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-48 h-1 bg-gray-200 rounded-full overflow-hidden">
-        <div class="h-full bg-black rounded-full" :style="{ width: `${progress * 100}%` }"></div>
+        <div class="h-full bg-gray-900 rounded-full transition-all duration-100" :style="{ width: `${progress * 100}%` }"></div>
       </div>
     </div>
   </section>
@@ -79,14 +85,12 @@ function handleScroll() {
   const sectionHeight = rect.height
   const windowHeight = window.innerHeight
 
-  // If section hasn't reached the top, we are at 0% progress
   if (sectionTop > 0) {
     progress.value = 0
     trackRef.value.style.transform = `translateX(0px)`
     return
   }
 
-  // Calculate how far we've scrolled inside the section
   const scrollDistance = -sectionTop
   const scrollableDistance = sectionHeight - windowHeight
 
@@ -96,19 +100,17 @@ function handleScroll() {
     progress.value = scrollDistance / scrollableDistance
   }
 
-  // Translate track based on progress
   const trackWidth = trackRef.value.scrollWidth
-  const maxTranslate = trackWidth - window.innerWidth + (window.innerWidth * 0.15) // Leave a bit of padding at end
+  const maxTranslate = trackWidth - window.innerWidth + (window.innerWidth * 0.15)
 
   const translateX = -(maxTranslate * progress.value)
 
-  // Apply a smooth spring-like transform using CSS or just direct apply (since we're scrolling, direct apply is fine but with a tiny transition for smoothing)
   trackRef.value.style.transform = `translate3d(${translateX}px, 0, 0)`
 }
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll() // Initial calculation
+  handleScroll()
 })
 
 onUnmounted(() => {
@@ -120,6 +122,7 @@ const stages = [
     id: 'research',
     name: 'Research',
     description: 'Give us a company name. We research web, news, job postings, funding, and tech stack.',
+    tags: ['Instant', 'AI-powered'],
     previewBg: 'oklch(0.95 0 0)',
     previewImage: '/images/preview-research.svg',
     previewAlt: 'Research output showing company summary, industry, tech stack, recent news, and job signals',
@@ -135,6 +138,7 @@ const stages = [
     id: 'pain-points',
     name: 'Pain Points',
     description: 'AI analyzes research to identify urgent challenges with evidence from real sources.',
+    tags: ['Urgency', 'Evidence'],
     previewBg: 'oklch(0.95 0 0)',
     previewImage: '/images/preview-pain-points.svg',
     previewAlt: 'Pain point cards with title, urgency badge, description, and supporting evidence',
@@ -150,6 +154,7 @@ const stages = [
     id: 'decision-makers',
     name: 'Decision Makers',
     description: 'Find the right contacts with verified emails, LinkedIn, and confidence scores.',
+    tags: ['Verified', '92% accuracy'],
     previewBg: 'oklch(0.95 0 0)',
     previewImage: '/images/preview-decision-makers.svg',
     previewAlt: 'Contact card with name, title, email with confidence score, LinkedIn, and source',
@@ -165,6 +170,7 @@ const stages = [
     id: 'outreach',
     name: 'Outreach',
     description: 'Generate personalized email sequences and LinkedIn messages ready to send.',
+    tags: ['Personalized', 'Multi-channel'],
     previewBg: 'oklch(0.95 0 0)',
     previewImage: '/images/preview-outreach.svg',
     previewAlt: 'Email draft with subject line, body, personalization tokens, and LinkedIn message variant',
@@ -180,6 +186,7 @@ const stages = [
     id: 'send',
     name: 'Send',
     description: 'Deliver your outreach directly from the platform with one click. Track opens, replies, and follow up automatically.',
+    tags: ['One-click', 'Tracked'],
     previewBg: 'oklch(0.95 0 0)',
     previewImage: '/images/preview-send.svg',
     previewAlt: 'Send interface showing email compose, send button, delivery status indicators, and open/reply tracking',

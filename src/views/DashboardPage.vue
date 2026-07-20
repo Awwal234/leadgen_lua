@@ -121,18 +121,65 @@ onMounted(fetchLeads)
       </button>
     </div>
 
-    <!-- Lead table -->
-    <div v-else class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+    <!-- Mobile: card list -->
+    <div v-else class="sm:hidden space-y-3">
+      <div v-for="lead in filteredLeads" :key="lead.id" @click="router.push(`/app/leads/${lead.id}`)"
+        class="bg-white rounded-xl border border-gray-200 p-4 cursor-pointer hover:bg-gray-50 transition-colors">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2 flex-wrap">
+              <p class="text-sm font-medium text-gray-900 truncate">{{ lead.company }}</p>
+              <StatusBadge :status="lead.status" />
+            </div>
+            <p v-if="lead.domain" class="text-xs text-gray-500 mt-1 truncate">{{ lead.domain }}</p>
+            <p v-if="lead.targetRole" class="text-xs text-gray-500 mt-0.5">Target: {{ lead.targetRole }}</p>
+            <div class="flex items-center gap-3 text-xs text-gray-500 mt-2">
+              <span class="flex items-center gap-1">
+                <span :class="(lead._count?.researchRuns ?? 0) > 0 ? 'text-green-600' : 'text-gray-400'">R</span>
+                {{ lead._count?.researchRuns ?? 0 }}
+              </span>
+              <span class="flex items-center gap-1">
+                <span :class="(lead._count?.painPoints ?? 0) > 0 ? 'text-green-600' : 'text-gray-400'">P</span>
+                {{ lead._count?.painPoints ?? 0 }}
+              </span>
+              <span class="flex items-center gap-1">
+                <span :class="(lead._count?.decisionMakers ?? 0) > 0 ? 'text-green-600' : 'text-gray-400'">D</span>
+                {{ lead._count?.decisionMakers ?? 0 }}
+              </span>
+              <span class="flex items-center gap-1">
+                <span :class="(lead._count?.outreachDrafts ?? 0) > 0 ? 'text-green-600' : 'text-gray-400'">O</span>
+                {{ lead._count?.outreachDrafts ?? 0 }}
+              </span>
+              <span class="text-gray-400 ml-auto">{{ new Date(lead.createdAt).toLocaleDateString() }}</span>
+            </div>
+          </div>
+          <button @click="handleDeleteLead(lead.id, $event)"
+            class="p-2 text-gray-400 hover:text-red-500 transition-colors touch-target shrink-0" title="Delete">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div v-if="filteredLeads.length === 0 && leads.length > 0" class="p-8 text-center text-sm text-gray-500">
+        No leads match the selected filter.
+      </div>
+    </div>
+
+    <!-- Desktop/tablet: table -->
+    <div v-if="leads.length > 0" class="hidden sm:block bg-white rounded-xl border border-gray-200 overflow-hidden">
       <div class="overflow-x-auto">
-        <table class="w-full min-w-[700px]">
+        <table class="w-full">
           <thead>
             <tr class="border-b border-gray-200 bg-gray-50/50">
               <th class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Company</th>
               <th
-                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">
+                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">
                 Domain</th>
               <th
-                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">
                 Target Role</th>
               <th
                 class="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">
@@ -148,8 +195,8 @@ onMounted(fetchLeads)
                 <p class="text-sm font-medium text-gray-900">{{ lead.company }}</p>
                 <p class="text-xs text-gray-500">{{ new Date(lead.createdAt).toLocaleDateString() }}</p>
               </td>
-              <td class="px-5 py-4 text-sm text-gray-600 hidden sm:table-cell">{{ lead.domain || '—' }}</td>
-              <td class="px-5 py-4 text-sm text-gray-600 hidden md:table-cell">{{ lead.targetRole || '—' }}</td>
+              <td class="px-5 py-4 text-sm text-gray-600 hidden md:table-cell">{{ lead.domain || '—' }}</td>
+              <td class="px-5 py-4 text-sm text-gray-600 hidden lg:table-cell">{{ lead.targetRole || '—' }}</td>
               <td class="px-5 py-4 hidden lg:table-cell">
                 <StatusBadge :status="lead.status" />
               </td>

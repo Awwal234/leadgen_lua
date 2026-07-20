@@ -96,6 +96,16 @@ api.interceptors.response.use(
       }
     }
 
+    // Insufficient credits — dispatch event for BuyCreditsModal
+    if (error.response?.status === 403) {
+      const data = error.response.data as Record<string, unknown>
+      if (data && typeof data === 'object' && 'balance' in data && 'needed' in data) {
+        window.dispatchEvent(new CustomEvent('insufficient-credits', {
+          detail: { balance: data.balance, needed: data.needed },
+        }))
+      }
+    }
+
     return Promise.reject(error)
   },
 )

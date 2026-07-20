@@ -70,6 +70,5 @@ onUnmounted(() => {
 <style>
 .landing-page {
   min-height: 100vh;
-  zoom: 0.9;
 }
 </style>

@@ -102,7 +102,17 @@ const router = createRouter({
           name: 'settings',
           component: () => import('@/views/SettingsPage.vue'),
         },
+        {
+          path: 'billing',
+          name: 'billing',
+          component: () => import('@/views/BillingPage.vue'),
+        },
       ],
+    },
+    {
+      path: '/payments/callback',
+      name: 'payments-callback',
+      component: () => import('@/views/PaymentsCallback.vue'),
     },
     {
       path: '/:pathMatch(.*)*',

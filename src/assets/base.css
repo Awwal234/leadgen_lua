@@ -141,6 +141,12 @@ select:-webkit-autofill {
   transition: background-color 99999s ease-in-out 0s;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   @layer base {
@@ -158,28 +164,6 @@ select:-webkit-autofill {
   }
 
   /* Base */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-  }
-
-  body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    line-height: var(--leading-normal);
-    color: var(--color-text);
-    background: var(--color-bg);
-  }
 
   h1,
   h2,

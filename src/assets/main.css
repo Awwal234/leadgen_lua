@@ -17,21 +17,27 @@
   .shadow-stripe-card {
     box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
   }
+
   .shadow-stripe-focus {
     box-shadow: 0 0 0 1px #635BFF, 0 1px 3px 0 rgba(50, 50, 93, 0.15);
   }
+
   .shadow-stripe-btn {
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   }
+
   .shadow-stripe-btn-hover {
     box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
   }
 }
 
 @keyframes pulse-slow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -52,4 +58,21 @@ input:-webkit-autofill:active {
   box-shadow: 0 0 0 9999px #ffffff inset !important;
   -webkit-text-fill-color: #32325D !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background: var(--color-bg);
 }

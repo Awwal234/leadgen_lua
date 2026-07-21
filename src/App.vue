@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { RouterView } from 'vue-router'
 import ToastNotification from '@/components/ToastNotification.vue'
 import BuyCreditsModal from '@/components/BuyCreditsModal.vue'
+import FeedbackWidget from '@/components/FeedbackWidget.vue'
 
 const showBuyModal = ref(false)
 const buyModalData = ref<{ balance: number; needed: number } | null>(null)
@@ -27,6 +28,7 @@ onUnmounted(() => {
   <RouterView />
   <BuyCreditsModal v-if="showBuyModal" :balance="buyModalData?.balance" :needed="buyModalData?.needed"
     @close="showBuyModal = false" />
+  <FeedbackWidget />
 </template>
 
 

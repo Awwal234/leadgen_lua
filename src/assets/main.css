@@ -11,6 +11,7 @@
   --ease-apple-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-stripe-spring: cubic-bezier(0.19, 1, 0.22, 1);
   --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-ping-slow: ping-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @layer utilities {
@@ -32,15 +33,14 @@
 }
 
 @keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
 
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
+@keyframes ping-slow {
+  0% { transform: scale(1); opacity: 0.25; }
+  50% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
 }
 
 /* Base styles */

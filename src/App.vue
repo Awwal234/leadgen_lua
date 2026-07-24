@@ -124,7 +124,7 @@ button {
 /*  */
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./fonts/HelveticaNeueLight.otf") format("opentype");
+  src: url("/fonts/HelveticaNeueLight.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -132,7 +132,7 @@ button {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./fonts/HelveticaNeueRegular.otf") format("opentype");
+  src: url("/fonts/HelveticaNeueRegular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -140,7 +140,7 @@ button {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./fonts/HelveticaNeueMedium.otf") format("opentype");
+  src: url("/fonts/HelveticaNeueMedium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -148,7 +148,7 @@ button {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./fonts/HelveticaNeueBold.otf") format("opentype");
+  src: url("/fonts/HelveticaNeueBold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -156,7 +156,7 @@ button {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./fonts/HelveticaNeueBlack.otf") format("opentype");
+  src: url("/fonts/HelveticaNeueBlack.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;

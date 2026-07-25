@@ -10,27 +10,58 @@
   --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
   --ease-apple-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --ease-stripe-spring: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
   --animate-pulse-slow: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-ping-slow: ping-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float-slow 8s ease-in-out infinite;
+  --animate-float-slower: float-slower 10s ease-in-out infinite;
+  --animate-glow: glow 4s ease-in-out infinite;
+  --animate-rotate: rotate 20s linear infinite;
 }
 
 @layer utilities {
-  .shadow-stripe-card {
-    box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25), 0 30px 60px -30px rgba(0, 0, 0, 0.3);
+  .shadow-card {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.02),
+      0 2px 4px rgba(0, 0, 0, 0.02),
+      0 8px 24px rgba(0, 0, 0, 0.04),
+      0 24px 64px rgba(0, 0, 0, 0.06);
   }
-
-  .shadow-stripe-focus {
-    box-shadow: 0 0 0 1px #635BFF, 0 1px 3px 0 rgba(50, 50, 93, 0.15);
+  .shadow-card-hover {
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.03),
+      0 4px 8px rgba(0, 0, 0, 0.02),
+      0 16px 40px rgba(0, 0, 0, 0.05),
+      0 40px 80px rgba(0, 0, 0, 0.08);
   }
-
-  .shadow-stripe-btn {
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  .shadow-input-focus {
+    box-shadow:
+      0 0 0 1px #111827,
+      0 0 0 3px rgba(17, 24, 39, 0.08);
   }
-
-  .shadow-stripe-btn-hover {
-    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  .shadow-input-error {
+    box-shadow:
+      0 0 0 1px rgba(239, 68, 68, 0.5),
+      0 0 0 3px rgba(239, 68, 68, 0.1);
   }
 }
+
+@media (width >= 64rem) {
+  .btn-clip-desktop {
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%);
+    filter: drop-shadow(0 2px 8px rgba(28,25,23,0.12));
+  }
+  .btn-clip-desktop:hover {
+    filter: drop-shadow(0 4px 20px rgba(28,25,23,0.25));
+  }
+  .btn-clip-desktop:active {
+    filter: drop-shadow(0 1px 4px rgba(28,25,23,0.15));
+  }
+}
+
+/* ─── Animations ───────────────────────────────────────────────────── */
 
 @keyframes pulse-slow {
   0%, 100% { opacity: 1; }
@@ -43,22 +74,45 @@
   100% { transform: scale(1); opacity: 0; }
 }
 
-/* Base styles */
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.02); }
+}
 
-/* ─── Autofill override ─────────────────────────────────────────────────── */
-/* Browsers (Chrome, Safari) inject a yellow/blue background on autofilled    */
-/* inputs. We can't override background-color directly, but we can paint      */
-/* over it with an inset box-shadow. Transition delay keeps it invisible       */
-/* during the fill animation.                                                  */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.04); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(14px) scale(0.96); }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Autofill override ─────────────────────────────────────────────── */
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 9999px #ffffff inset !important;
   box-shadow: 0 0 0 9999px #ffffff inset !important;
-  -webkit-text-fill-color: #32325D !important;
+  -webkit-text-fill-color: #111827 !important;
+  caret-color: #111827 !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
 
 html {
   font-size: 16px;

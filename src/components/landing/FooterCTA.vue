@@ -43,7 +43,7 @@ defineEmits<{
               <div class="w-5 h-3 border-l-2 border-b-2 border-white/10 rounded-bl-md"></div>
             </div>
             <button
-              class="relative inline-flex items-center justify-center gap-3 font-semibold cursor-pointer whitespace-nowrap px-10 py-4 text-[15px] min-h-[52px] bg-white text-gray-900 hover:bg-gray-100 active:scale-[0.97] transition-all duration-300 rounded-xl shadow-[0_8px_28px_rgba(255,255,255,0.06)] hover:shadow-[0_12px_36px_rgba(255,255,255,0.1)]"
+              class="btn-clip-desktop relative inline-flex items-center justify-center gap-3 font-semibold cursor-pointer whitespace-nowrap px-10 py-4 text-[15px] min-h-[52px] bg-white text-gray-900 hover:bg-gray-100 active:scale-[0.97] transition-all duration-300 rounded-xl shadow-[0_8px_28px_rgba(255,255,255,0.06)] hover:shadow-[0_12px_36px_rgba(255,255,255,0.1)]"
               @click="$emit('ctaClick')">
               <span>Start free</span>
               <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="opacity-60">

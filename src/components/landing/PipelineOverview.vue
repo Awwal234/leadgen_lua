@@ -1,42 +1,51 @@
 <template>
-  <section id="how-it-works" ref="sectionRef" class="relative bg-[#fafafa]" style="height: 500vh;"
+  <section id="how-it-works" ref="sectionRef" class="relative"
+    style="height: 500vh; background: linear-gradient(180deg, #fcfcfc 0%, #f8f8f8 50%, #f5f5f5 100%);"
     aria-labelledby="pipeline-heading">
-    <div ref="stickyRef" class="sticky top-0 h-screen w-full flex flex-col justify-center">
-      <header class="text-center w-full max-w-[580px] mx-auto mb-6 px-6 shrink-0 mt-12">
-        <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-400 mb-3">Pipeline</p>
+    <div ref="stickyRef" class="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute top-[-20%] left-[-5%] w-[40%] h-[50%] rounded-full opacity-[0.025]"
+          style="background: radial-gradient(circle at center, #000 0%, transparent 70%)" />
+        <div class="absolute bottom-[-20%] right-[-5%] w-[40%] h-[50%] rounded-full opacity-[0.025]"
+          style="background: radial-gradient(circle at center, #000 0%, transparent 70%)" />
+      </div>
+
+      <header class="text-center w-full max-w-[580px] mx-auto mb-8 px-6 shrink-0 relative">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-gray-300 mb-4 pt-8 md:pt-12">Pipeline</p>
         <h2 id="pipeline-heading"
-          class="text-[clamp(1.5rem,2.5vw+0.75rem,2rem)] font-bold tracking-[-0.04em] leading-tight text-gray-900 mb-2">
+          class="text-[clamp(1.6rem,2.8vw+0.75rem,2.25rem)] font-bold tracking-[-0.04em] leading-tight text-gray-900 mb-3">
           From company name to send-ready outreach</h2>
-        <p class="text-[14px] md:text-[15px] text-gray-500 font-medium tracking-[-0.01em] leading-snug">
+        <p class="text-[14px] md:text-[15px] text-gray-400 font-medium tracking-[-0.01em] leading-snug">
           Five integrated stages. One AI-powered workflow.</p>
       </header>
 
       <div class="w-full overflow-hidden pb-8 md:pb-12 flex-1 flex">
-        <div ref="trackRef" class="flex gap-5 md:gap-8 px-[8vw] md:px-[12vw] w-max will-change-transform my-auto" role="list"
-          aria-label="Pipeline stages">
+        <div ref="trackRef" class="flex gap-5 md:gap-8 px-[8vw] md:px-[12vw] w-max will-change-transform my-auto"
+          role="list" aria-label="Pipeline stages">
           <article v-for="(stage, index) in stages" :key="stage.id"
-            class="w-[82vw] sm:w-[360px] lg:w-[400px] bg-white rounded-2xl p-5 md:p-6 text-center flex flex-col shrink-0 shadow-[0_2px_12px_rgba(0,0,0,0.03),0_0_0_1px_rgba(0,0,0,0.02)]"
+            class="w-[82vw] sm:w-[360px] lg:w-[400px] bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-7 text-center flex flex-col shrink-0 shadow-[0_1px_3px_rgba(0,0,0,0.03),0_0_0_1px_rgba(0,0,0,0.03)]"
             role="listitem">
             <div
-              class="w-8 h-8 mx-auto mb-3 flex items-center justify-center text-[11px] font-bold bg-amber-50 border border-amber-200/50 rounded-xl">
-              <span class="tracking-[-0.02em] text-amber-700">{{ String(index + 1).padStart(2, '0') }}</span>
+              class="w-9 h-9 mx-auto mb-4 flex items-center justify-center text-[12px] font-bold bg-gray-900 text-white rounded-[10px]">
+              {{ String(index + 1).padStart(2, '0') }}
             </div>
             <div class="flex flex-wrap gap-1.5 justify-center mb-3">
               <span v-for="tag in stage.tags" :key="tag"
-                class="px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200/30 text-[9px] font-semibold text-amber-600/70 uppercase tracking-[0.12em] leading-none">
+                class="px-2.5 py-0.5 rounded-full bg-gray-50 border border-gray-100/80 text-[9px] font-semibold text-gray-400 uppercase tracking-[0.12em] leading-none">
                 {{ tag }}
               </span>
             </div>
-            <h3 class="text-[16px] font-bold tracking-[-0.02em] text-gray-900 mb-2">{{ stage.name }}</h3>
-            <p class="text-[13px] text-gray-500 mb-4 leading-snug font-medium">{{ stage.description }}</p>
+            <h3 class="text-[17px] font-bold tracking-[-0.02em] text-gray-900 mb-2">{{ stage.name }}</h3>
+            <p class="text-[13px] text-gray-400 mb-4 leading-snug font-medium">{{ stage.description }}</p>
 
-            <img :src="stage.previewImage" :alt="stage.previewAlt" class="w-full max-h-32 object-cover rounded-lg mb-4 border border-gray-100/60" loading="lazy" />
+            <img :src="stage.previewImage" :alt="stage.previewAlt"
+              class="w-full max-h-32 object-cover rounded-[10px] mb-4 border border-gray-50" loading="lazy" />
 
             <ul class="list-none p-0 m-0 text-left space-y-1.5">
               <li v-for="output in stage.outputs" :key="output"
-                class="flex items-start gap-2 text-[12px] text-gray-500 leading-snug font-medium">
+                class="flex items-start gap-2 text-[12px] text-gray-400 leading-snug font-medium">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                  class="shrink-0 mt-0.5 text-amber-400" aria-hidden="true">
+                  class="shrink-0 mt-0.5 text-gray-300" aria-hidden="true">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
                 {{ output }}

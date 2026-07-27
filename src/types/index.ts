@@ -136,6 +136,7 @@ export interface User {
   name: string
   company_name: string
   email: string
+  title?: string
   is_verified?: boolean
   created_at?: string
 }
@@ -169,4 +170,66 @@ export interface PaginatedResponse<T> {
   total?: number
   page?: number
   limit?: number
+}
+
+export type PackId = 'starter' | 'growth' | 'pro'
+
+export interface CreditPack {
+  id: PackId
+  credits: number
+  price: number
+  label: string
+}
+
+export const CREDIT_PACKS: CreditPack[] = [
+  { id: 'starter', credits: 10, price: 4500, label: 'Starter' },
+  { id: 'growth', credits: 50, price: 20000, label: 'Growth' },
+  { id: 'pro', credits: 150, price: 52500, label: 'Pro' },
+]
+
+export type PaymentStatus = 'PENDING' | 'PAID' | 'FAILED'
+
+export interface PaymentTransaction {
+  paymentReference: string
+  transactionReference: string | null
+  userId: string
+  packId: PackId
+  amount: number
+  status: PaymentStatus
+  createdAt: string
+  verifiedAt: string | null
+}
+
+export interface CreditLedgerEntry {
+  id: string
+  userId: string
+  delta: number
+  reason: string
+  paymentReference: string | null
+  createdAt: string
+}
+
+export interface PaymentInitiateResponse {
+  checkoutUrl: string
+  paymentReference: string
+}
+
+export interface PaymentStatusResponse {
+  paymentReference: string
+  status: PaymentStatus
+  packId: PackId
+  amount: number
+  createdAt: string
+  verifiedAt: string | null
+  creditBalance: number
+}
+
+export interface CreditsResponse {
+  credits: number
+}
+
+export interface InsufficientCreditsError {
+  error: string
+  balance: number
+  needed: number
 }

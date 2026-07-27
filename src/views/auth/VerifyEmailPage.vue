@@ -4,6 +4,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { toast } from '@/utils/toast'
 import { getErrorMessage } from '@/utils/error'
+import AuthCard from '@/components/auth/AuthCard.vue'
+import AuthInput from '@/components/auth/AuthInput.vue'
+import AuthButton from '@/components/auth/AuthButton.vue'
 
 const auth = useAuthStore()
 const route = useRoute()
@@ -11,10 +14,12 @@ const router = useRouter()
 
 const otp = ref('')
 const userId = ref((route.query.user_id as string) || '')
+const error = ref('')
 
 async function handleVerify() {
+  error.value = ''
   if (!userId.value || otp.value.length !== 6) {
-    toast.warn('Validation', 'Please enter the 6-digit OTP')
+    error.value = 'Please enter the 6-digit code'
     return
   }
   try {
@@ -22,7 +27,7 @@ async function handleVerify() {
     toast.success('Email Verified', 'Your account is ready')
     router.push('/app')
   } catch (err: unknown) {
-    toast.error('Verification Failed', getErrorMessage(err, 'Invalid OTP'))
+    error.value = getErrorMessage(err, 'Invalid or expired code')
   }
 }
 
@@ -31,45 +36,46 @@ async function handleResend() {
   try {
     const email = auth.user?.email || ''
     await auth.resendOtp(email, 'email_verification')
-    toast.success('OTP Sent', 'Check your email for a new code')
+    toast.success('Code Sent', 'Check your email for a new code')
   } catch (err: unknown) {
-    toast.error('Failed', getErrorMessage(err, 'Could not resend OTP'))
+    toast.error('Failed', getErrorMessage(err, 'Could not resend code'))
   }
 }
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center">
-    <div class="w-12 h-12 bg-black rounded-xl flex items-center justify-center mx-auto mb-4">
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
+  <AuthCard title="Verify your email" subtitle="We sent a 6-digit code to your email. Enter it below to activate your account.">
+    <!-- Mail icon -->
+    <div class="flex justify-center mb-2">
+      <div class="w-12 h-12 rounded-2xl flex items-center justify-center bg-gray-50 border border-gray-200">
+        <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
     </div>
-    <h2 class="text-xl font-semibold text-gray-900 mb-2">Verify your email</h2>
-    <p class="text-sm text-gray-500 mb-6">Enter the 6-digit code sent to your email</p>
 
     <form @submit.prevent="handleVerify" class="space-y-4">
-      <input
-        v-model="otp"
-        type="text"
-        maxlength="6"
-        placeholder="000000"
-        class="w-full h-12 px-3 rounded-lg border border-gray-300 text-2xl font-mono text-center tracking-widest focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black"
-      />
-      <button
-        type="submit"
-        :disabled="auth.loading"
-        class="w-full h-11 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {{ auth.loading ? 'Verifying...' : 'Verify email' }}
-      </button>
+      <AuthInput v-model="otp" label="Verification code" type="text"
+        icon="mail" :error="error" maxlength="6"
+        class="tracking-[0.35em] text-center text-lg font-mono" />
+
+      <AuthButton :loading="auth.loading">
+        <template v-if="auth.loading">Verifying...</template>
+        <template v-else>Verify email</template>
+      </AuthButton>
     </form>
 
-    <button
-      @click="handleResend"
-      class="mt-4 text-sm text-gray-600 hover:text-black transition-colors"
-    >
-      Resend code
-    </button>
-  </div>
+    <template #footer>
+      <div class="flex flex-col items-center gap-3">
+        <p class="text-sm text-gray-500">
+          Didn't receive the code?
+          <button @click="handleResend"
+            class="font-medium text-gray-900 hover:text-gray-600 transition-colors ml-1">
+            Resend
+          </button>
+        </p>
+      </div>
+    </template>
+  </AuthCard>
 </template>

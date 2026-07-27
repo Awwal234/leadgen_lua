@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="#fafafa"/>
+  <!-- App Window -->
+  <rect x="80" y="80" width="640" height="440" rx="24" fill="white" stroke="#e5e7eb" stroke-width="2" filter="drop-shadow(0 20px 40px rgba(0,0,0,0.05))"/>
+  <!-- Header -->
+  <path d="M80 104 C80 90.7452 90.7452 80 104 80 L696 80 C709.255 80 720 90.7452 720 104 L720 140 L80 140 L80 104 Z" fill="#f9fafb"/>
+  <rect x="80" y="140" width="640" height="2" fill="#e5e7eb"/>
+  <circle cx="112" cy="110" r="6" fill="#ef4444"/>
+  <circle cx="136" cy="110" r="6" fill="#f59e0b"/>
+  <circle cx="160" cy="110" r="6" fill="#10b981"/>
+  
+  <rect x="300" y="100" width="200" height="20" rx="10" fill="#e5e7eb"/>
+
+  <!-- Content Grid -->
+  <!-- Sidebar -->
+  <rect x="112" y="172" width="160" height="12" rx="6" fill="#e5e7eb"/>
+  <rect x="112" y="200" width="120" height="8" rx="4" fill="#f3f4f6"/>
+  <rect x="112" y="224" width="140" height="8" rx="4" fill="#f3f4f6"/>
+  <rect x="112" y="248" width="100" height="8" rx="4" fill="#f3f4f6"/>
+
+  <!-- Main Content Area -->
+  <rect x="320" y="172" width="360" height="240" rx="16" fill="#f9fafb" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <rect x="352" y="204" width="120" height="12" rx="6" fill="#e5e7eb"/>
+  <rect x="352" y="240" width="280" height="8" rx="4" fill="#e5e7eb"/>
+  <rect x="352" y="264" width="260" height="8" rx="4" fill="#e5e7eb"/>
+  <rect x="352" y="288" width="240" height="8" rx="4" fill="#e5e7eb"/>
+  
+  <rect x="352" y="340" width="140" height="40" rx="20" fill="#111827"/>
+  <path d="M414 360 L430 360 M424 354 L430 360 L424 366" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

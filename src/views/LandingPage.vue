@@ -9,6 +9,7 @@ import StageDecisionMakers from '@/components/landing/StageDecisionMakers.vue'
 import StageOutreach from '@/components/landing/StageOutreach.vue'
 import FAQSection from '@/components/landing/FAQSection.vue'
 import FooterCTA from '@/components/landing/FooterCTA.vue'
+import PublicFooter from '@/components/landing/PublicFooter.vue'
 import StickyCTABar from '@/components/landing/StickyCTABar.vue'
 import { useScrollReveal } from '@/composables/useScrollReveal'
 
@@ -48,23 +49,35 @@ onUnmounted(() => {
 
     <PipelineOverview />
 
-    <StageResearch />
+    <div class="lg:sticky lg:top-0 bg-white">
+      <StageResearch />
+    </div>
 
-    <StagePainPoints />
+    <div class="lg:sticky lg:top-0 bg-white">
+      <StagePainPoints />
+    </div>
 
-    <StageDecisionMakers />
+    <div class="lg:sticky lg:top-0 bg-white">
+      <StageDecisionMakers />
+    </div>
 
-    <StageOutreach />
+    <div class="lg:sticky lg:top-0 bg-white">
+      <StageOutreach />
+    </div>
 
-    <FAQSection />
+    <div class="relative z-10 bg-white">
+      <FAQSection />
 
-    <FooterCTA @cta-click="scrollToRegister" />
+      <FooterCTA @cta-click="scrollToRegister" />
+
+      <PublicFooter />
+    </div>
 
     <StickyCTABar :class="{ 'is-visible': showStickyCTA }" @cta-click="scrollToRegister" />
   </main>
 </template>
 
-<style scoped>
+<style>
 .landing-page {
   min-height: 100vh;
 }

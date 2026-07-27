@@ -1,235 +1,110 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 defineEmits<{
   ctaClick: []
 }>()
+
+const showVideo = ref(false)
 </script>
 
 <template>
-  <header class="max-w-7xl mx-auto pt-12 md:pt-20">
-    <div class="text-center max-w-[900px] mx-auto">
-      <h1
-        class="hero-fade font-display text-[clamp(2.25rem,5vw+1rem,4rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-gray-900 mb-6 md:mb-8"
-        style="animation-delay: 0ms"
-      >
-        Research target accounts.<br />
-        Find decision makers.<br />
-        Write and send outreach.
-      </h1>
-
-      <p
-        class="hero-fade text-[clamp(1.125rem,1.5vw+0.75rem,1.375rem)] leading-relaxed text-gray-500 max-w-[60ch] mx-auto mb-8 md:mb-10"
-        style="animation-delay: 150ms"
-      >
-        AI pipeline that turns a company name into researched, personalized outreach — sent in 5
-        steps. No credit card. 100 leads/month free.
-      </p>
-
-      <div
-        class="hero-fade flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-        style="animation-delay: 300ms"
-      >
-        <button
-          class="inline-flex items-center justify-center gap-2 font-medium rounded-lg border cursor-pointer no-underline whitespace-nowrap px-8 py-4 text-base min-h-[48px] bg-black text-white border-black hover:bg-gray-900 hover:border-gray-900 hover:-translate-y-px hover:shadow-md transition-all active:scale-[0.97]"
-          @click="$emit('ctaClick')"
-        >
-          <span>Start free — no credit card required</span>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path
-              d="M5 10h10M10 5v10"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-        <a
-          href="/login"
-          class="inline-flex items-center justify-center gap-2 font-medium rounded-lg border cursor-pointer no-underline whitespace-nowrap px-8 py-4 text-base min-h-[48px] bg-white text-gray-900 border-gray-200 hover:bg-gray-50 hover:border-gray-300 transition-all active:scale-[0.97]"
-          >Sign in to your workspace</a
-        >
+  <header class="relative bg-white overflow-hidden">
+    <div
+      class="min-h-[90vh] md:min-h-screen w-full flex items-center px-6 md:px-10 lg:px-12 pt-28 md:pt-32 pb-24 md:pb-32">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-[0.015]"
+          style="background: radial-gradient(circle at center, #000 0%, transparent 70%)" />
+        <div
+          class="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full opacity-[0.015]"
+          style="background: radial-gradient(circle at center, #000 0%, transparent 70%)" />
+        <div
+          class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.02]"
+          style="background: radial-gradient(ellipse at center, #000 0%, transparent 60%)" />
       </div>
 
-      <div
-        class="hero-fade flex items-center justify-center gap-3 p-4 bg-white border-x border-t border-gray-200 rounded-t-xl mt-10 flex-wrap"
-        style="animation-delay: 450ms"
-        role="img"
-        aria-label="Pipeline preview: Research → Pain Points → Decision Makers → Outreach → Send"
-      >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 550ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35" />
+      <div class="max-w-[780px] mx-auto text-center relative">
+        <h1
+          class="text-[clamp(2.6rem,5.5vw+1rem,4.5rem)] font-bold tracking-[-0.04em] leading-[1.08] text-gray-900 mb-6 md:mb-8">
+          Research accounts.<br>
+          Find decision makers.<br>
+          Send outreach.
+        </h1>
+
+        <p
+          class="text-[18px] md:text-[20px] text-gray-400 max-w-[580px] mx-auto leading-relaxed font-normal mb-10 md:mb-12">
+          AI-powered pipeline that converts a company name into researched, personalized outreach. No credit card.
+        </p>
+
+        <div class="flex items-center justify-center gap-3 md:gap-5">
+          <button
+            class="btn-clip-desktop inline-flex items-center justify-center gap-2 font-semibold rounded-[10px] cursor-pointer whitespace-nowrap px-5 md:px-8 py-3.5 text-[15px] bg-gray-900 text-white hover:bg-gray-800 active:scale-[0.97] transition-all duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.08)]"
+            @click="$emit('ctaClick')">
+            Start free
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true" class="opacity-60">
+              <path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
             </svg>
-          </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Research</span
-          >
-        </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 590ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 630ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"
-              />
-              <line x1="12" y1="9" x2="12" y2="13" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-          </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Pain Points</span
-          >
-        </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 670ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 710ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-              <circle cx="12" cy="7" r="4" />
-            </svg>
-          </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Decision Makers</span
-          >
-        </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 750ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 790ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-              />
-              <polyline points="22,6 12,13 2,6" />
-            </svg>
-          </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap"
-            >Outreach</span
-          >
-        </div>
-        <span
-          class="hero-arrow shrink-0 text-gray-200 text-lg"
-          style="animation-delay: 830ms"
-          aria-hidden="true"
-          >→</span
-        >
-        <div
-          class="hero-step flex flex-col items-center gap-1 shrink-0 min-w-[80px] p-2"
-          style="animation-delay: 870ms"
-        >
-          <div class="w-9 h-9 flex items-center justify-center bg-gray-100 text-black rounded-md">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              aria-hidden="true"
-            >
-              <path
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-          </div>
-          <span class="text-xs font-medium text-gray-500 text-center whitespace-nowrap">Send</span>
+          </button>
+          <button
+            class="group inline-flex items-center gap-3.5 text-[15px] font-medium text-gray-400 hover:text-gray-900 transition-all duration-300 cursor-pointer bg-transparent border-none p-0"
+            @click="showVideo = true">
+            <span
+              class="relative flex items-center justify-center w-[46px] h-[46px] rounded-full border border-gray-200 group-hover:border-gray-900 transition-all duration-300">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="text-gray-900 ml-0.5">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+            </span>
+            <span>Watch the demo</span>
+          </button>
         </div>
       </div>
     </div>
   </header>
+
+  <Teleport to="body">
+    <Transition name="demo">
+      <div v-if="showVideo" class="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-8 md:p-12"
+        @click="showVideo = false">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" />
+        <div class="relative w-full max-w-[900px] bg-black rounded-none overflow-hidden shadow-2xl" @click.stop>
+          <button @click="showVideo = false"
+            class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/10 backdrop-blur flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-200"
+            aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+          <iframe
+            src="https://player.cloudinary.com/embed/?cloud_name=drxgewgtj&public_id=untitled_xkja0n&profile=cld-default"
+            style="height: auto; width: 100%; aspect-ratio: 640 / 360; display: block;"
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0" />
+        </div>
+      </div>
+    </Transition>
+  </Teleport>
 </template>
 
 <style scoped>
-.hero-fade {
+.demo-enter-active,
+.demo-leave-active {
+  transition: opacity 0.3s ease;
+}
+.demo-enter-active > div:last-child,
+.demo-leave-active > div:last-child {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.demo-enter-from,
+.demo-leave-to {
   opacity: 0;
-  transform: translateY(20px);
-  animation: hero-fade-in 700ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-
-.hero-step {
+.demo-enter-from > div:last-child {
+  transform: scale(0.92) translateY(12px);
   opacity: 0;
-  transform: translateY(12px);
-  animation: hero-fade-in 500ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-
-.hero-arrow {
+.demo-leave-to > div:last-child {
+  transform: scale(0.95) translateY(8px);
   opacity: 0;
-  animation: hero-fade-in 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes hero-fade-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-fade,
-  .hero-step,
-  .hero-arrow {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
 }
 </style>

@@ -25,13 +25,13 @@ function toggle() {
       :value="modelValue"
       @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       :placeholder="placeholder || 'Enter password'"
-      class="w-full h-11 px-3 pr-11 rounded-lg border text-sm focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black"
-      :class="error ? 'border-red-400 bg-red-50' : 'border-gray-300'"
+      class="w-full h-[44px] px-3 pr-12 rounded-lg border text-[15px] text-[#32325D] placeholder:text-[#8898AA] transition-all duration-200 focus:outline-none focus:border-[#635BFF] focus:shadow-stripe-focus"
+      :class="error ? 'border-red-400 bg-red-50 text-red-900 placeholder:text-red-300 focus:border-red-400 focus:shadow-[0_0_0_1px_#f87171,0_1px_3px_0_rgba(50,50,93,0.15)]' : 'border-[#e6ebf1] bg-white hover:border-gray-300'"
     />
     <button
       type="button"
       @click="toggle"
-      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-0.5"
+      class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-900 transition-colors p-1 rounded-lg hover:bg-gray-100"
       tabindex="-1"
     >
       <svg v-if="show" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

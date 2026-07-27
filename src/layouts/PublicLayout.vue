@@ -3,7 +3,7 @@ import PublicNav from '@/components/landing/PublicNav.vue'
 </script>
 
 <template>
-  <div class="public-layout">
+  <div class="public-layout font-body selection:bg-black/10 text-gray-900 bg-[#fafafa]">
     <PublicNav />
     <main class="public-main">
       <router-view />

@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import type { InternalAxiosRequestConfig } from 'axios'
 
-const API_BASE = 'http://localhost:5000'
+const API_BASE = import.meta.env.VITE_API_BASE
 
 const api = axios.create({
   baseURL: API_BASE,
@@ -93,6 +93,16 @@ api.interceptors.response.use(
         return Promise.reject(refreshError)
       } finally {
         isRefreshing = false
+      }
+    }
+
+    // Insufficient credits — dispatch event for BuyCreditsModal
+    if (error.response?.status === 403) {
+      const data = error.response.data as Record<string, unknown>
+      if (data && typeof data === 'object' && 'balance' in data && 'needed' in data) {
+        window.dispatchEvent(new CustomEvent('insufficient-credits', {
+          detail: { balance: data.balance, needed: data.needed },
+        }))
       }
     }
 

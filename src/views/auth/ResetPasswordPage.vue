@@ -5,8 +5,9 @@ import { useAuthStore } from '@/stores/auth'
 import { toast } from '@/utils/toast'
 import { getErrorMessage } from '@/utils/error'
 import { useFormErrors } from '@/composables/useFormErrors'
-import FormField from '@/components/FormField.vue'
-import PasswordInput from '@/components/PasswordInput.vue'
+import AuthCard from '@/components/auth/AuthCard.vue'
+import AuthInput from '@/components/auth/AuthInput.vue'
+import AuthButton from '@/components/auth/AuthButton.vue'
 
 const auth = useAuthStore()
 const route = useRoute()
@@ -48,54 +49,34 @@ async function handleResend() {
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-    <h2 class="text-xl font-semibold text-gray-900 mb-6">Reset password</h2>
+  <AuthCard title="Set new password" subtitle="Enter the code from your email and choose a new password.">
     <form @submit.prevent="handleReset" class="space-y-4">
-      <FormField label="Email" :error="errors.email">
-        <input
-          v-model="email"
-          type="email"
-          readonly
-          class="w-full h-11 px-3 rounded-lg border border-gray-200 text-sm bg-gray-50 text-gray-500"
-        />
-      </FormField>
-      <FormField label="OTP code" :error="errors.otp">
-        <input
-          v-model="otp"
-          @input="onInput('otp')"
-          type="text"
-          maxlength="6"
-          placeholder="000000"
-          class="w-full h-11 px-3 rounded-lg border text-sm font-mono tracking-widest focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black"
-          :class="errors.otp ? 'border-red-400 bg-red-50' : 'border-gray-300'"
-        />
-      </FormField>
-      <FormField label="New password" :error="errors.new_password">
-        <PasswordInput
-          v-model="newPassword"
-          @update:model-value="onInput('new_password')"
-          placeholder="Enter new password"
-          :error="errors.new_password"
-        />
-      </FormField>
-      <button
-        type="submit"
-        :disabled="auth.loading"
-        class="w-full h-11 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {{ auth.loading ? 'Resetting...' : 'Reset password' }}
-      </button>
+      <AuthInput v-model="email" label="Email" type="email" icon="mail" readonly :error="errors.email" />
+
+      <AuthInput v-model="otp" label="Verification code" type="text" icon="mail" 
+        :error="errors.otp" @update:model-value="onInput('otp')" maxlength="6"
+        class="tracking-[0.35em] text-center text-lg font-mono" />
+
+      <AuthInput v-model="newPassword" label="New Password" type="password" icon="lock"
+        autocomplete="new-password" show-strength
+        :error="errors.new_password" @update:model-value="onInput('new_password')" />
+
+      <AuthButton :loading="auth.loading">
+        <template v-if="auth.loading">Resetting...</template>
+        <template v-else>Reset password</template>
+      </AuthButton>
     </form>
 
-    <div class="mt-4 text-center space-y-2">
-      <button @click="handleResend" class="text-sm text-gray-600 hover:text-black transition-colors">
-        Resend code
-      </button>
-      <div>
-        <router-link to="/login" class="text-sm text-gray-600 hover:text-black transition-colors">
-          Back to sign in
+    <template #footer>
+      <div class="flex flex-col items-center gap-3">
+        <button @click="handleResend"
+          class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">
+          Resend code
+        </button>
+        <router-link to="/login" class="text-sm text-gray-400 hover:text-gray-900 transition-colors">
+          Return to sign in
         </router-link>
       </div>
-    </div>
-  </div>
+    </template>
+  </AuthCard>
 </template>
